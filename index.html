@@ -3,67 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Animated Page</title>
+  <title>Saoirse Ng · girly purple </title>
   <style>
-    /* Reset & Base Styles */
+    /* Reset & Base */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Arial', sans-serif;
+      font-family: 'Segoe UI', 'Quicksand', system-ui, -apple-system, sans-serif;
     }
 
     body {
-      background: linear-gradient(135deg, #1a1a2e, #16213e);
-      color: #fff;
+      background: linear-gradient(145deg, #2b1b3a 0%, #1e142b 100%);
+      color: #f5e9ff;
       min-height: 100vh;
       overflow-x: hidden;
+      padding: 0 1rem;
     }
 
-    /* Header Animation */
+    /* ----- purple girly glow ----- */
     header {
       text-align: center;
-      padding: 2rem;
+      padding: 2.5rem 1rem 1.5rem;
       animation: fadeInDown 1s ease-out;
     }
 
     h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      font-size: 3.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #f8c8ff, #d9a5f0, #c084e8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 30px rgba(200, 130, 255, 0.3);
+      margin-bottom: 0.5rem;
+      font-family: 'Quicksand', 'Segoe UI', sans-serif;
     }
 
-    /* Typing Animation */
     .typing-text {
-      font-size: 1.5rem;
-      margin: 1rem 0;
-      min-height: 3rem;
-      border-right: 2px solid #fff;
-      animation: blink 0.7s infinite;
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: #f0d6ff;
+      min-height: 4rem;
+      border-right: 3px solid #e6b3ff;
+      display: inline-block;
+      padding-right: 8px;
+      animation: blink 0.8s infinite;
+      letter-spacing: 0.5px;
+      text-shadow: 0 0 12px #b77ae0;
     }
 
-    /* Blinking Cursor */
     @keyframes blink {
       0%, 100% { border-color: transparent; }
-      50% { border-color: #fff; }
+      50% { border-color: #d9a5f0; }
     }
 
-    /* Fade-In Animations */
+    /* fade animations */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
+      from { opacity: 0; transform: translateY(-30px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Scroll-Triggered Elements */
+    /* scroll trigger */
     .scroll-animate {
       opacity: 0;
       transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transition: opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1), transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
     .scroll-animate.animate {
@@ -71,79 +82,195 @@
       transform: translateY(0);
     }
 
-    /* Cool Button */
+    /* ----- cute buttons & cards ----- */
     .cool-button {
       display: inline-block;
-      padding: 12px 24px;
-      background: #0077b6;
-      color: #fff;
-      border: none;
-      border-radius: 50px;
-      font-size: 1rem;
+      padding: 14px 34px;
+      background: #b57ed9;
+      color: #1f1430;
+      border: 2px solid #eac3ff;
+      border-radius: 60px;
+      font-size: 1.2rem;
+      font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s ease;
-      margin: 1rem;
+      transition: all 0.25s ease;
+      margin: 1.5rem 0.5rem;
+      box-shadow: 0 6px 0 #6f4a8b;
+      letter-spacing: 0.8px;
+      backdrop-filter: blur(4px);
+      background: rgba(190, 140, 230, 0.75);
     }
 
     .cool-button:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 20px rgba(0, 119, 182, 0.7);
-      background: #023e8a;
+      transform: scale(1.08) translateY(-2px);
+      box-shadow: 0 0 30px #c58bff, 0 8px 0 #5f3f7a;
+      background: #d9a5f0;
+      border-color: #f5d6ff;
+      color: #170d22;
     }
 
-    /* Floating Animation for Cards */
+    /* floating card */
     .card {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      padding: 2rem;
-      margin: 1.5rem;
+      background: rgba(220, 180, 255, 0.13);
+      backdrop-filter: blur(8px);
+      border-radius: 40px 20px 40px 20px;
+      padding: 2.2rem 2rem;
+      margin: 2rem 0;
       text-align: center;
-      backdrop-filter: blur(5px);
-      animation: float 6s ease-in-out infinite;
+      border: 1px solid rgba(235, 200, 255, 0.25);
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.5);
+      animation: float 7s ease-in-out infinite;
+    }
+
+    .card h3 {
+      font-size: 2.2rem;
+      color: #f2d6ff;
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .card p {
+      font-size: 1.25rem;
+      color: #ebd5ff;
+      line-height: 1.5;
     }
 
     @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      0%, 100% { transform: translateY(0px) rotate(0.2deg); }
+      50% { transform: translateY(-12px) rotate(0.5deg); }
     }
 
-    /* Section Styling */
+    /* section layout */
     section {
-      padding: 4rem 2rem;
+      padding: 2.5rem 1.5rem;
       max-width: 1000px;
       margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.8rem;
+      font-weight: 600;
+      background: linear-gradient(145deg, #ebc6ff, #cf9af0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .bio-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.8rem;
+      margin: 2.5rem 0;
+    }
+
+    .bio-item {
+      background: rgba(160, 100, 200, 0.18);
+      backdrop-filter: blur(4px);
+      padding: 1.2rem 2rem;
+      border-radius: 80px 20px 80px 20px;
+      border: 1px solid #c79cf0;
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #f3e2ff;
+      box-shadow: 0 4px 12px rgba(120, 60, 180, 0.3);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .bio-item span {
+      font-size: 2rem;
+    }
+
+    .bio-item:hover {
+      transform: scale(1.02) translateY(-4px);
+      background: rgba(190, 130, 230, 0.3);
+      border-color: #e4b3ff;
+      box-shadow: 0 0 30px #c084e8;
+    }
+
+    /* extra girly sparkle */
+    .glow-text {
+      color: #f0d6ff;
+      text-shadow: 0 0 20px #c37cf0, 0 0 40px #a45fcf;
+    }
+
+    hr {
+      border: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #b77ae0, #d9a5f0, #b77ae0, transparent);
+      margin: 2rem 0;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* responsive */
+    @media (max-width: 600px) {
+      h1 { font-size: 2.6rem; }
+      .typing-text { font-size: 1.3rem; }
+      .section-title { font-size: 2.2rem; }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Welcome to My Animated Page</h1>
-    <p class="typing-text" id="typing-text"></p>
+    <h1>✨ Saoirse Ng ✨</h1>
+    <div class="typing-text" id="typing-text"></div>
   </header>
 
   <section>
-    <h2 class="scroll-animate">Scroll Down to See Magic</h2>
-    <p class="scroll-animate">
-      This text fades in when you scroll near it! Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <h2 class="scroll-animate section-title">🌸 about me 🌸</h2>
+    <div class="bio-grid">
+      <div class="bio-item scroll-animate"><span>🎨</span> painting</div>
+      <div class="bio-item scroll-animate"><span>📚</span> reading</div>
+      <div class="bio-item scroll-animate"><span>🍣</span> sushi lover</div>
+      <div class="bio-item scroll-animate"><span>💻</span> programming</div>
+    </div>
+
+    <p class="scroll-animate" style="font-size:1.3rem; line-height:1.7; max-width:700px; margin: 1rem auto; background: rgba(120, 60, 180, 0.15); padding: 1.5rem 2rem; border-radius: 60px 20px 60px 20px; backdrop-filter: blur(4px); border:1px solid #b77ae0;">
+      <span style="font-size:2rem; margin-right:8px;">💜</span> 
+      i'm saoirse — code, canvas, books & endless sushi. 
+      this page is as purple and playful as my notebook doodles. 
+      <span style="display:inline-block; margin-left:6px;">✨</span>
     </p>
-    <button class="cool-button scroll-animate">Hover Me!</button>
+
+    <button class="cool-button scroll-animate" onclick="alert('💜 you\'re a cool kid! 🍣✨')">✨ hover me ✨</button>
   </section>
 
   <section>
     <div class="card scroll-animate">
-      <h3>Floating Card</h3>
-      <p>This card gently floats up and down. Try adding more content here!</p>
+      <h3>🍣 floating sushi dream 🍣</h3>
+      <p>this card floats gently — just like my mood when i eat spicy tuna rolls. <br> 
+      <span style="color:#eac3ff;">💜 programming · painting · reading · sushi 💜</span></p>
+      <div style="margin-top:1.2rem; font-size:2.2rem; letter-spacing: 10px;">🎨📖🍣💻</div>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; gap:1.5rem; justify-content:center; margin: 2rem 0;">
+      <div class="scroll-animate" style="background:rgba(160, 100, 200, 0.2); padding:0.8rem 2rem; border-radius:50px; border:1px solid #b77ae0;">
+        <span style="font-size:1.8rem;">🖌️</span> painting palette
+      </div>
+      <div class="scroll-animate" style="background:rgba(160, 100, 200, 0.2); padding:0.8rem 2rem; border-radius:50px; border:1px solid #b77ae0;">
+        <span style="font-size:1.8rem;">📖</span> bookworm
+      </div>
+      <div class="scroll-animate" style="background:rgba(160, 100, 200, 0.2); padding:0.8rem 2rem; border-radius:50px; border:1px solid #b77ae0;">
+        <span style="font-size:1.8rem;">🍣</span> sushi addict
+      </div>
     </div>
   </section>
 
   <script>
-    // Typing Animation
-    function typeWriter(elementId, text, speed = 50) {
+    // ========== TYPING ==========
+    function typeWriter(elementId, text, speed = 55) {
       let i = 0;
       const element = document.getElementById(elementId);
       if (!element) return;
 
-      element.innerHTML = ''; // Clear existing text
+      element.innerHTML = '';
       function type() {
         if (i < text.length) {
           element.innerHTML += text.charAt(i);
@@ -154,24 +281,47 @@
       type();
     }
 
-    // Scroll Animations
-    window.addEventListener('scroll', () => {
+    // ========== SCROLL ANIMATIONS ==========
+    function handleScroll() {
       const elements = document.querySelectorAll('.scroll-animate');
+      const windowHeight = window.innerHeight;
       elements.forEach(el => {
-        const elementTop = el.getBoundingClientRect().top;
-        if (elementTop < window.innerHeight - 100) {
+        const rect = el.getBoundingClientRect();
+        const triggerPoint = windowHeight - 120;
+        if (rect.top < triggerPoint) {
           el.classList.add('animate');
         }
       });
-    });
+    }
 
-    // Initialize on load
-    window.onload = () => {
-      typeWriter('typing-text', 'This text is typing itself...');
+    // ========== INIT ==========
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll); // just in case
 
-      // Trigger initial scroll check
-      window.dispatchEvent(new Event('scroll'));
+    window.onload = function() {
+      // custom girly typing message
+      typeWriter('typing-text', '💜 paint · code · read · sushi 💜', 60);
+
+      // force initial scroll check
+      handleScroll();
+
+      // little extra sparkle: show alert after 4 sec? no, better keep clean.
+      // but we can add a tiny console love
+      console.log('✨ saoirse · purple girly vibes ✨');
     };
+
+    // also trigger on DOM ready
+    document.addEventListener('DOMContentLoaded', function() {
+      // ensure scroll check after layout
+      setTimeout(handleScroll, 100);
+    });
   </script>
+
+  <!-- extra girly footer (not necessary but cute) -->
+  <footer style="text-align:center; padding: 2rem 0 1.5rem; color: #b58ad4; letter-spacing: 2px; font-size:0.9rem;">
+    <span style="background: rgba(140, 80, 200, 0.15); padding:0.4rem 2rem; border-radius:60px; backdrop-filter: blur(4px); border:1px solid #a86bc9;">
+      💜 made with purple & sparkle · saoirse ng 💜
+    </span>
+  </footer>
 </body>
 </html>
