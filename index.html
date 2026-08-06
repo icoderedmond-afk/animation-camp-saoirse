@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArcadeVerse - Play Free Mini Games</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #131b2e;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-cyan: #06b6d4;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --success: #10b981;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+
+        .arcade-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            max-width: 1400px;
+        }
+
+        .game-card {
+            background-color: var(--card-bg);
+            border-radius: 1.25rem;
+            padding: 1.5rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid #1e293b;
+        }
+
+        .game-card h2 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-main);
+        }
+
+        .game-container {
+            margin: 0.5rem 0;
+            text-align: center;
+            background: #090d16;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            border: 1px solid #1a2234;
+        }
+
+        button {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: opacity 0.2s;
+            margin: 0.2rem;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .play-screen {
+            width: 100%;
+            height: 130px;
+            background: #020617;
+            border-radius: 0.5rem;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #334155;
+            margin-bottom: 0.8rem;
+        }
+
+        /* Game 1 Elements */
+        #coin {
+            width: 30px;
+            height: 30px;
+            background: gold;
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            left: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 10px gold;
+            display: none;
+        }
+
+        /* Game 2 Elements */
+        .hole-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            height: 100%;
+            padding: 8px;
+        }
+
+        .hole {
+            background: #1e293b;
+            border-radius: 50%;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mole {
+            width: 22px;
+            height: 22px;
+            background: var(--accent-pink);
+            border-radius: 50%;
+            display: none;
+            box-shadow: 0 0 8px var(--accent-pink);
+        }
+
+        /* Game 4 Elements */
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            height: 100%;
+            padding: 10px;
+        }
+        .mem-pad {
+            background: #1e293b;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.1s;
+        }
+
+        /* Game 5 Elements */
+        .bubble {
+            width: 26px;
+            height: 26px;
+            background: rgba(6, 182, 212, 0.6);
+            border: 2px solid var(--accent-cyan);
+            border-radius: 50%;
+            position: absolute;
+            cursor: pointer;
+            display: none;
+        }
+
+        .score-board {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+            border-top: 1px solid #1e293b;
+            padding-top: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        footer {
+            margin-top: 3rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>⚡ ArcadeVerse</h1>
+        <p class="subtitle">Your ultimate playground of visual browser mini-games!</p>
+    </header>
+
+    <div class="arcade-grid">
+        <div class="game-card">
+            <div>
+                <h2>🪙 Catch the Coin</h2>
+                <div class="game-container">
+                    <div class="play-screen" id="coin-screen">
+                        <div id="coin" onclick="catchCoin()"></div>
+                    </div>
+                    <button onclick="startCoinGame()">Start Game</button>
+                </div>
+            </div>
+            <div class="score-board">
+                <span id="coin-score">Score: 0</span>
+                <span id="coin-status">Ready</span>
+            </div>
+        </div>
+
+        <div class="game-card">
+            <div>
+                <h2>🎯 Whack-a-Dot</h2>
+                <div class="game-container">
+                    <div class="play-screen">
+                        <div class="hole-grid">
+                            <div class="hole" onclick="hitHole(0)"><div class="mole" id="m0"></div></div>
+                            <div class="hole" onclick="hitHole(1)"><div class="mole" id="m1"></div></div>
+                            <div class="hole" onclick="hitHole(2)"><div class="mole" id="m2"></div></div>
+                        </div>
+                    </div>
+                    <button onclick="startWhack()">Start Game</button>
+                </div>
+            </div>
+            <div class="score-board">
+                <span id="whack-score">Score: 0</span>
+                <span id="whack-status">Ready</span>
+            </div>
+        </div>
+
+        <div class="game-card">
+            <div>
+                <h2>🎨 Color Match</h2>
+                <div class="game-container">
+                    <div class="play-screen" style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                        <p id="target-color-text" style="font-size: 1rem; margin-bottom: 0.5rem; font-weight: bold;">Match: Cyan</p>
+                    </div>
+                    <button onclick="checkColor('cyan')" style="background: var(--accent-cyan);">Cyan</button>
+                    <button onclick="checkColor('pink')" style="background: var(--accent-pink);">Pink</button>
+                    <button onclick="checkColor('purple')" style="background: var(--accent-purple);">Purple</button>
+                </div>
+            </div>
+            <div class="score-board">
+                <span id="color-score">Score: 0</span>
+            </div>
+        </div>
+
+        <div class="game-card">
+            <div>
+                <h2>🧠 Memory Flash</h2>
+                <div class="game-container">
+                    <div class="play-screen">
+                        <div class="memory-grid">
+                            <button class="mem-pad" id="p0" onclick="pressPad(0)"></button>
+                            <button class="mem-pad" id="p1" onclick="pressPad(1)"></button>
+                            <button class="mem-pad" id="p2" onclick="pressPad(2)"></button>
+                            <button class="mem-pad" id="p3" onclick="pressPad(3)"></button>
+                        </div>
+                    </div>
+                    <button onclick="startMemoryGame()">Start Pattern</button>
+                </div>
+            </div>
+            <div class="score-board">
+                <span id="memory-status">Press Start</span>
+            </div>
+        </div>
+
+        <div class="game-card">
+            <div>
+                <h2>🎈 Bubble Pop</h2>
+                <div class="game-container">
+                    <div class="play-screen" id="bubble-screen">
+                        <div class="bubble" id="bubble" onclick="popBubble()"></div>
+                    </div>
+                    <button onclick="startBubbleGame()">Start Pop</button>
+                </div>
+            </div>
+            <div class="score-board">
+                <span id="bubble-score">Score: 0</span>
+                <span id="bubble-status">Ready</span>
+            </div>
+        </div>
+
+        <div class="game-card">
+            <div>
+                <h2>💥 Clicker Mania</h2>
+                <div class="game-container">
+                    <div class="play-screen" style="display: flex; align-items: center; justify-content: center;">
+                        <span id="big-click-display" style="font-size: 2rem; font-weight: bold; color: var(--success);">0</span>
+                    </div>
+                    <button onclick="incrementClicker()" style="background: linear-gradient(135deg, #10b981, #06b6d4); width: 100%;">CLICK RAPIDLY!</button>
+                </div>
+            </div>
+            <div class="score-board">
+                <span>Status: Active</span>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 ArcadeVerse. Fully visual arcade dashboard.</p>
+    </footer>
+
+    <script>
+        // --- 1. Catch the Coin ---
+        let coinScore = 0;
+        let coinInterval;
+        function startCoinGame() {
+            coinScore = 0;
+            document.getElementById('coin-score').innerText = `Score: ${coinScore}`;
+            document.getElementById('coin-status').innerText = `Playing`;
+            document.getElementById('coin').style.display = 'block';
+            clearInterval(coinInterval);
+            coinInterval = setInterval(moveCoin, 800);
+        }
+        function moveCoin() {
+            const screen = document.getElementById('coin-screen');
+            const coin = document.getElementById('coin');
+            coin.style.left = Math.floor(Math.random() * (screen.clientWidth - 35)) + 'px';
+            coin.style.top = Math.floor(Math.random() * (screen.clientHeight - 35)) + 'px';
+        }
+        function catchCoin() {
+            coinScore++;
+            document.getElementById('coin-score').innerText = `Score: ${coinScore}`;
+            moveCoin();
+        }
+
+        // --- 2. Whack-a-Dot ---
+        let whackScore = 0;
+        let activeHole = null;
+        let whackTimer;
+        function startWhack() {
+            whackScore = 0;
+            document.getElementById('whack-score').innerText = `Score: ${whackScore}`;
+            document.getElementById('whack-status').innerText = `Playing`;
+            clearInterval(whackTimer);
+            whackTimer = setInterval(() => {
+                for(let i=0; i<3; i++) document.getElementById('m' + i).style.display = 'none';
+                activeHole = Math.floor(Math.random() * 3);
+                document.getElementById('m' + activeHole).style.display = 'block';
+            }, 700);
+        }
+        function hitHole(index) {
+            if (index === activeHole) {
+                whackScore++;
+                document.getElementById('whack-score').innerText = `Score: ${whackScore}`;
+                document.getElementById('m' + activeHole).style.display = 'none';
+                activeHole = null;
+            }
+        }
+
+        // --- 3. Color Match ---
+        let colorScore = 0;
+        const colors = ['cyan', 'pink', 'purple'];
+        let targetColor = 'cyan';
+        function nextColorRound() {
+            targetColor = colors[Math.floor(Math.random() * colors.length)];
+            document.getElementById('target-color-text').innerText = `Click the: ${targetColor.toUpperCase()}`;
+        }
+        function checkColor(selected) {
+            if (selected === targetColor) {
+                colorScore++;
+                document.getElementById('color-score').innerText = `Score: ${colorScore}`;
+                nextColorRound();
+            } else {
+                colorScore = Math.max(0, colorScore - 1);
+                document.getElementById('color-score').innerText = `Score: ${colorScore}`;
+            }
+        }
+        nextColorRound();
+
+        // --- 4. Memory Flash ---
+        let memorySequence = [];
+        let playerStep = 0;
+        let isPlayingMemory = false;
+        function startMemoryGame() {
+            memorySequence = [];
+            playerStep = 0;
+            isPlayingMemory = true;
+            document.getElementById('memory-status').innerText = "Watch sequence...";
+            addToMemory();
+        }
+        function addToMemory() {
+            playerStep = 0;
+            memorySequence.push(Math.floor(Math.random() * 4));
+            let i = 0;
+            let interval = setInterval(() => {
+                let padIdx = memorySequence[i];
+                flashPad(padIdx);
+                i++;
+                if (i >= memorySequence.length) {
+                    clearInterval(interval);
+                    document.getElementById('memory-status').innerText = "Your turn!";
+                }
+            }, 600);
+        }
+        function flashPad(idx) {
+            let pad = document.getElementById('p' + idx);
+            pad.style.background = 'var(--accent-cyan)';
+            setTimeout(() => { pad.style.background = '#1e293b'; }, 300);
+        }
+        function pressPad(idx) {
+            if (!isPlayingMemory) return;
+            flashPad(idx
