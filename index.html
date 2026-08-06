@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Saoirse Ng · girly purple </title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saoirse Ng · purple girly</title>
   <style>
-    /* Reset & Base */
+    /* ----- RESET & BASE ----- */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', 'Quicksand', system-ui, -apple-system, sans-serif;
+      font-family: 'Quicksand', 'Segoe UI', system-ui, -apple-system, sans-serif;
     }
 
     body {
@@ -18,10 +18,10 @@
       color: #f5e9ff;
       min-height: 100vh;
       overflow-x: hidden;
-      padding: 0 1rem;
+      padding: 0 1rem 1rem;
     }
 
-    /* ----- purple girly glow ----- */
+    /* ----- HEADER & TYPING ----- */
     header {
       text-align: center;
       padding: 2.5rem 1rem 1.5rem;
@@ -38,7 +38,6 @@
       background-clip: text;
       text-shadow: 0 0 30px rgba(200, 130, 255, 0.3);
       margin-bottom: 0.5rem;
-      font-family: 'Quicksand', 'Segoe UI', sans-serif;
     }
 
     .typing-text {
@@ -50,7 +49,6 @@
       display: inline-block;
       padding-right: 8px;
       animation: blink 0.8s infinite;
-      letter-spacing: 0.5px;
       text-shadow: 0 0 12px #b77ae0;
     }
 
@@ -59,34 +57,28 @@
       50% { border-color: #d9a5f0; }
     }
 
-    /* fade animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     @keyframes fadeInDown {
       from { opacity: 0; transform: translateY(-30px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* scroll trigger */
+    /* ----- SCROLL ANIMATION ----- */
     .scroll-animate {
       opacity: 0;
       transform: translateY(30px);
-      transition: opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1), transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+      transition: opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+                  transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
     }
-
     .scroll-animate.animate {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* ----- cute buttons & cards ----- */
+    /* ----- BUTTONS & CARDS ----- */
     .cool-button {
       display: inline-block;
       padding: 14px 34px;
-      background: #b57ed9;
+      background: rgba(190, 140, 230, 0.75);
       color: #1f1430;
       border: 2px solid #eac3ff;
       border-radius: 60px;
@@ -96,11 +88,9 @@
       transition: all 0.25s ease;
       margin: 1.5rem 0.5rem;
       box-shadow: 0 6px 0 #6f4a8b;
-      letter-spacing: 0.8px;
       backdrop-filter: blur(4px);
-      background: rgba(190, 140, 230, 0.75);
+      letter-spacing: 0.8px;
     }
-
     .cool-button:hover {
       transform: scale(1.08) translateY(-2px);
       box-shadow: 0 0 30px #c58bff, 0 8px 0 #5f3f7a;
@@ -109,7 +99,6 @@
       color: #170d22;
     }
 
-    /* floating card */
     .card {
       background: rgba(220, 180, 255, 0.13);
       backdrop-filter: blur(8px);
@@ -121,15 +110,12 @@
       box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.5);
       animation: float 7s ease-in-out infinite;
     }
-
     .card h3 {
       font-size: 2.2rem;
       color: #f2d6ff;
       margin-bottom: 0.8rem;
       font-weight: 600;
-      letter-spacing: 1px;
     }
-
     .card p {
       font-size: 1.25rem;
       color: #ebd5ff;
@@ -141,13 +127,12 @@
       50% { transform: translateY(-12px) rotate(0.5deg); }
     }
 
-    /* section layout */
+    /* ----- SECTIONS ----- */
     section {
       padding: 2.5rem 1.5rem;
       max-width: 1000px;
       margin: 0 auto;
     }
-
     .section-title {
       font-size: 2.8rem;
       font-weight: 600;
@@ -158,6 +143,7 @@
       margin-bottom: 0.5rem;
     }
 
+    /* ----- BIO GRID ----- */
     .bio-grid {
       display: flex;
       flex-wrap: wrap;
@@ -165,7 +151,6 @@
       gap: 1.8rem;
       margin: 2.5rem 0;
     }
-
     .bio-item {
       background: rgba(160, 100, 200, 0.18);
       backdrop-filter: blur(4px);
@@ -181,11 +166,7 @@
       align-items: center;
       gap: 10px;
     }
-
-    .bio-item span {
-      font-size: 2rem;
-    }
-
+    .bio-item span { font-size: 2rem; }
     .bio-item:hover {
       transform: scale(1.02) translateY(-4px);
       background: rgba(190, 130, 230, 0.3);
@@ -193,20 +174,63 @@
       box-shadow: 0 0 30px #c084e8;
     }
 
-    /* extra girly sparkle */
-    .glow-text {
+    /* ----- VISITOR COUNTER (the box) ----- */
+    .visitor-box {
+      max-width: 500px;
+      margin: 2.5rem auto 1.5rem;
+      padding: 1.2rem 2rem;
+      background: rgba(140, 80, 200, 0.2);
+      backdrop-filter: blur(8px);
+      border: 2px solid #c28df0;
+      border-radius: 100px 30px 100px 30px;
+      text-align: center;
+      box-shadow: 0 0 40px rgba(160, 100, 220, 0.3);
+      transition: all 0.3s ease;
+    }
+    .visitor-box:hover {
+      border-color: #e6b3ff;
+      box-shadow: 0 0 60px #b77ae0;
+    }
+    .visitor-box p {
+      font-size: 1.5rem;
+      font-weight: 500;
       color: #f0d6ff;
-      text-shadow: 0 0 20px #c37cf0, 0 0 40px #a45fcf;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .visitor-box .counter-number {
+      font-size: 2.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #f8c8ff, #d68eff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: inline-block;
+      min-width: 3.5rem;
+    }
+    .visitor-box .visitor-icon {
+      font-size: 2.2rem;
+      line-height: 1;
     }
 
-    hr {
-      border: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #b77ae0, #d9a5f0, #b77ae0, transparent);
-      margin: 2rem 0;
-      width: 80%;
-      margin-left: auto;
-      margin-right: auto;
+    /* small footer */
+    footer {
+      text-align: center;
+      padding: 2rem 0 1rem;
+      color: #b58ad4;
+      letter-spacing: 2px;
+      font-size: 0.9rem;
+    }
+    footer span {
+      background: rgba(140, 80, 200, 0.15);
+      padding: 0.4rem 2rem;
+      border-radius: 60px;
+      backdrop-filter: blur(4px);
+      border: 1px solid #a86bc9;
     }
 
     /* responsive */
@@ -214,6 +238,8 @@
       h1 { font-size: 2.6rem; }
       .typing-text { font-size: 1.3rem; }
       .section-title { font-size: 2.2rem; }
+      .visitor-box p { font-size: 1.2rem; }
+      .visitor-box .counter-number { font-size: 2.2rem; }
     }
   </style>
 </head>
@@ -263,13 +289,29 @@
     </div>
   </section>
 
+  <!-- ===== VISITOR COUNTER BOX ===== -->
+  <div class="visitor-box scroll-animate" id="visitorBox">
+    <p>
+      <span class="visitor-icon">👀</span>
+      <span>visitors today</span>
+      <span class="counter-number" id="visitorCount">0</span>
+      <span class="visitor-icon">✨</span>
+    </p>
+    <div style="font-size:0.8rem; color:#b58ad4; margin-top:6px; letter-spacing:1px;">
+      💜 thanks for stopping by, cool kid! 💜
+    </div>
+  </div>
+
+  <footer>
+    <span>💜 made with purple & sparkle · saoirse ng 💜</span>
+  </footer>
+
   <script>
-    // ========== TYPING ==========
-    function typeWriter(elementId, text, speed = 55) {
+    // ===== TYPING =====
+    function typeWriter(elementId, text, speed = 60) {
       let i = 0;
       const element = document.getElementById(elementId);
       if (!element) return;
-
       element.innerHTML = '';
       function type() {
         if (i < text.length) {
@@ -281,47 +323,68 @@
       type();
     }
 
-    // ========== SCROLL ANIMATIONS ==========
+    // ===== SCROLL ANIMATION =====
     function handleScroll() {
       const elements = document.querySelectorAll('.scroll-animate');
       const windowHeight = window.innerHeight;
       elements.forEach(el => {
         const rect = el.getBoundingClientRect();
-        const triggerPoint = windowHeight - 120;
-        if (rect.top < triggerPoint) {
+        if (rect.top < windowHeight - 120) {
           el.classList.add('animate');
         }
       });
     }
 
-    // ========== INIT ==========
+    // ===== VISITOR COUNTER (simple + localStorage) =====
+    function updateVisitorCount() {
+      const counterEl = document.getElementById('visitorCount');
+      if (!counterEl) return;
+
+      // use localStorage to persist the count (simulates "visitors" for this browser)
+      let count = parseInt(localStorage.getItem('saoirse_visitor_count') || '0', 10);
+      
+      // if this is the first visit of the day? we can increment once per session
+      // but we want a "today" feel: increment only once per browser session
+      // we'll use a session flag to avoid counting every refresh
+      const sessionVisited = sessionStorage.getItem('saoirse_session_visited');
+      
+      if (!sessionVisited) {
+        // new session → increment
+        count += 1;
+        localStorage.setItem('saoirse_visitor_count', String(count));
+        sessionStorage.setItem('saoirse_session_visited', 'true');
+      }
+      
+      // display with cute animation (just update text)
+      counterEl.textContent = count;
+      
+      // optional: tiny sparkle effect on the number
+      counterEl.style.transition = 'transform 0.2s ease';
+      counterEl.style.transform = 'scale(1.2)';
+      setTimeout(() => { counterEl.style.transform = 'scale(1)'; }, 200);
+    }
+
+    // ===== INIT =====
     window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll); // just in case
+    window.addEventListener('resize', handleScroll);
 
     window.onload = function() {
-      // custom girly typing message
+      // typing message
       typeWriter('typing-text', '💜 paint · code · read · sushi 💜', 60);
-
-      // force initial scroll check
+      
+      // initial scroll check
       handleScroll();
-
-      // little extra sparkle: show alert after 4 sec? no, better keep clean.
-      // but we can add a tiny console love
-      console.log('✨ saoirse · purple girly vibes ✨');
+      
+      // visitor counter
+      updateVisitorCount();
+      
+      console.log('✨ saoirse · purple girly vibes · visitor counter active ✨');
     };
 
-    // also trigger on DOM ready
+    // also run after DOM ready
     document.addEventListener('DOMContentLoaded', function() {
-      // ensure scroll check after layout
       setTimeout(handleScroll, 100);
     });
   </script>
-
-  <!-- extra girly footer (not necessary but cute) -->
-  <footer style="text-align:center; padding: 2rem 0 1.5rem; color: #b58ad4; letter-spacing: 2px; font-size:0.9rem;">
-    <span style="background: rgba(140, 80, 200, 0.15); padding:0.4rem 2rem; border-radius:60px; backdrop-filter: blur(4px); border:1px solid #a86bc9;">
-      💜 made with purple & sparkle · saoirse ng 💜
-    </span>
-  </footer>
 </body>
 </html>
